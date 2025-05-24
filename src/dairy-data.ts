@@ -10,7 +10,7 @@ export interface Diary {
 export const diaryData: Diary = {
   id: crypto.randomUUID(), // 항목에 대한 고유 ID 생성
   creationDate: new Date(), // 작성일을 현재 날짜 및 시간으로 설정
-  content: "오늘의 일기를 작성했습니다. Vite와 TypeScript를 사용하니 개발이 즐겁네요! (외부 모듈에서 가져온 데이터)"
+  content: "오늘의 일기를 작성했습니다. Vite와 TypeScript를 사용하니 개발이 즐겁네요!"
 };
 
 // 향후 더 많은 일기 관련 로직 (예: 저장, 불러오기 함수)을 이 파일에 추가할 수 있습니다.
