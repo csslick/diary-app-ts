@@ -21,8 +21,12 @@ export function router() {
     </nav>
     <main class='p-4'></main>
   `
+  
+  // URL에서 경로와 쿼리 문자열을 분리합니다.
+  const path = hash.split('?')[0];
 
-  switch (hash) {
+  // switch (hash) {
+  switch (path) {
     case '':
     case '#/':
       app.innerHTML = getLayout('Diary', 'home')
@@ -37,7 +41,7 @@ export function router() {
       Detail(app)
       break
     default:
-      document.title = '404 - Page Not Found'
+      app.innerHTML = getLayout('404', 'error'); // 'error' 타입으로 레이아웃 설정
       app.querySelector('main')!.innerHTML = `
         <h2>404 - 페이지를 찾을 수 없습니다.</h2>
       `

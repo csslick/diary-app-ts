@@ -10,11 +10,14 @@ export default function Home(container: HTMLElement) {
 
   diaryData.forEach(diary => {
     diaryList.innerHTML += `
-      <li class="diary-item bg-gray-200 p-4 rounded-lg mb-5" data-id="${diary.id}">
+      <li 
+        class="diary-item bg-gray-200 p-4 rounded-lg mb-5" data-id="${diary.id}"
+        onclick="location.href='#/detail?id=${diary.id}'"
+      >
         <p>${diary.content}</p>
         <footer>
           <span>${diary.creationDate.toLocaleDateString()}</span>
-          <button class="delete-button" data-id="${diary.id}">삭제</button>
+          <button class="delete-button">삭제</button>
         </footer>
       </li>
     `;
