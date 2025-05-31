@@ -8,7 +8,11 @@ export default function Home(container: HTMLElement) {
   // 일기 데이터 표시
   const diaryList = document.createElement('ul');
 
-  diaryData.forEach(diary => {
+  // 일기 데이터를 최신순으로 정렬하며 저장
+  const sortedDiaryData = diaryData.sort((a, b) => b.creationDate.getTime() - a.creationDate.getTime());
+
+  // diaryData.forEach(diary => {
+  sortedDiaryData.forEach(diary => {
     diaryList.innerHTML += `
       <li 
         class="diary-item bg-gray-200 p-4 rounded-lg mb-5" data-id="${diary.id}"

@@ -15,12 +15,12 @@ export const diaryData: Diary[] = [
   },
   {
     id: crypto.randomUUID(),
-    creationDate: new Date("2023-10-01"),
-    content: "가을이 오고 있습니다. 단풍이 아름답네요."
+    creationDate: new Date("2025-05-01"),
+    content: "오늘은 날씨가 맑아서 산책을 갔습니다. 기분이 상쾌했어요!"
   },
   {
     id: crypto.randomUUID(),
-    creationDate: new Date("2023-10-02"),
+    creationDate: new Date("2025-05-02"),
     content: "오늘은 친구와 함께 영화를 봤습니다. 정말 재미있었어요!"
   }
 ];
