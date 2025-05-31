@@ -19,16 +19,18 @@ export default function Home(container: HTMLElement) {
         onclick="location.href='#/detail?id=${diary.id}'"
       >
         <p>${diary.content}</p>
-        <footer>
+        <footer class="flex justify-between items-center mt-2">
           <span>${diary.creationDate.toLocaleDateString()}</span>
-          <button class="delete-button">삭제</button>
+          <button class="delete-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="#DC3545" d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6z"/></svg>
+          </button>
         </footer>
       </li>
     `;
   });
 
   main.appendChild(diaryList);
-  
+
   // 글 추가 버튼
   const addButton = `
     <button class="add-button fixed left-[50%] translate-x-[-50%] bottom-4" onclick="location.href='#/write'">
@@ -36,4 +38,25 @@ export default function Home(container: HTMLElement) {
     </button>
   `
   main.insertAdjacentHTML('beforeend', addButton);
+
+  // 일기 삭제
+  const deleteButtons = main.querySelectorAll('.delete-button');
+  deleteButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+      event.stopPropagation(); // 클릭 이벤트 전파 방지
+      const diaryItem = (button as HTMLElement).closest('.diary-item');
+      if (diaryItem) {
+        const id = diaryItem.getAttribute('data-id');
+        if (id) {
+          // diaryData에서 해당 id의 일기 삭제
+          const index = diaryData.findIndex(d => d.id === id);
+          if (index !== -1) {
+            diaryData.splice(index, 1);
+            diaryItem.remove(); // DOM에서 일기 항목 제거
+          }
+        }
+      }
+    });
+  });
+
 }

@@ -21,4 +21,17 @@ export default function Detail(container: HTMLElement) {
       </footer>
     </div>
   `
+
+  // 일기 삭제
+  const deleteButton = main?.querySelector('.delete-button');
+  deleteButton?.addEventListener('click', () => {
+    // diaryData에서 해당 id의 일기 삭제 
+    const index = diaryData.findIndex(d => d.id === id);
+    if (index !== -1) {
+      diaryData.splice(index, 1);
+      // 일기 삭제 후 홈으로 이동
+      window.location.hash = '#/';
+    }
+  });
+
 }
