@@ -1,4 +1,5 @@
 import './style.css'
+import { diaryData } from './diary-data'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
@@ -6,5 +7,10 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <h1 class='text-[28px]'>Diary</h1>
       <button class='text-lg'>완료</button>
     </header>
+    <main class='p-4'>
+      <p>${diaryData[0].date}</p>
+      <p>${diaryData[0].content}</p>
+      <p>${diaryData[0].id}</p>
+    </main>
   </div>
 `
