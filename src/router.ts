@@ -19,9 +19,7 @@ export function router() {
           ${page === 'detail' ? `<button class='text-lg'>완료</button>` : ''}
           ${page === 'write' ? `<button class='text-lg'>완료</button>` : ''}
         </header>
-        <main class='p-4'>
-          여기에 페이지 내용이 들어갑니다.
-        </main>
+        <main class='p-4'></main>
       </div>
     `
   }
