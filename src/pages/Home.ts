@@ -11,7 +11,9 @@ export default function Home(container: HTMLElement) {
   const diaryList = document.createElement('ul');
   diaryData.forEach(diary => {
     diaryList.innerHTML += `
-      <li class="diary-item bg-gray-200 p-4 rounded-lg mb-5" data-id="${diary.id}">
+      <li 
+        onclick="location.href='#/detail?id=${diary.id}'"
+        class="diary-item bg-gray-200 p-4 rounded-lg mb-5" data-id="${diary.id}">
         <p>${diary.content}
         <footer class="flex justify-between items-center mt-2">
           <time class="text-sm text-gray-500" datetime="${diary.date}">${diary.date}</time>

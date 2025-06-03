@@ -25,7 +25,8 @@ export function router() {
   }
   
   // 경로에 따라 페이지 랜더링
-  const hash = window.location.hash;
+  const hash = window.location.hash.split('?')[0]; // 해시에서 쿼리 파라미터 제거
+  
   console.log('Current path:', hash);
   if (hash === '' || hash === '#/') {
     app.innerHTML = getLayout('Diary', 'home');
