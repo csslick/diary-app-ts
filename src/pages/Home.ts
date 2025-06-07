@@ -12,7 +12,7 @@ export default function Home(container: HTMLElement) {
   diaryData.forEach(diary => {
     diaryList.innerHTML += `
       <li 
-        onclick="location.href='#/detail?id=${diary.id}'"
+        onclick="location.href='#/detail?${diary.id}'"
         class="diary-item bg-gray-200 p-4 rounded-lg mb-5" data-id="${diary.id}">
         <p>${diary.content}
         <footer class="flex justify-between items-center mt-2">
@@ -26,7 +26,7 @@ export default function Home(container: HTMLElement) {
 
   // 글 추가 버튼
   const addButton = `
-    <button class="add-button fixed left-[50%] bottom-4 transform -translate-x-[50%] px-4 py-2">
+    <button class="add-button fixed left-[50%] bottom-4 transform -translate-x-[50%] px-4 py-2" onclick="location.href='#/write'">
       <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24"><path fill="#007AFF" d="M17 13h-4v4h-2v-4H7v-2h4V7h2v4h4m-5-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
     </button>
   `
