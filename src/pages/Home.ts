@@ -9,10 +9,11 @@ export default function Home(container: HTMLElement) {
   }
 
   const diaryList = document.createElement('ul');
-  diaryData.forEach(diary => {
+  const sortedDiaryData = diaryData.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  sortedDiaryData.forEach(diary => {
     diaryList.innerHTML += `
       <li 
-        onclick="location.href='#/detail?${diary.id}'"
+        onclick="location.href='#/detail?id=${diary.id}'"
         class="diary-item bg-gray-200 p-4 rounded-lg mb-5" data-id="${diary.id}">
         <p>${diary.content}
         <footer class="flex justify-between items-center mt-2">
@@ -33,4 +34,22 @@ export default function Home(container: HTMLElement) {
   main.insertAdjacentHTML('beforeend', addButton);
 
   main.appendChild(diaryList);
+
+  // 삭제 버튼 이벤트 리스너 추가
+  const deleteButtons = main.querySelectorAll('.delete-button');
+  deleteButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+      event.stopPropagation(); // 클릭 이벤트 전파 방지
+      const diaryItem = (button.closest('.diary-item') as HTMLElement);
+      const id = diaryItem.getAttribute('data-id');
+      if (id) {
+        const index = diaryData.findIndex(d => d.id === id);
+        if (index !== -1) {
+          diaryData.splice(index, 1); // 일기 데이터에서 삭제
+          diaryItem.remove(); // DOM에서 삭제
+          console.log(`Diary with id ${id} deleted`);
+        }
+      }
+    });
+  });
 }

@@ -41,7 +41,6 @@ export function router() {
     if (submitButton) {
       submitButton.addEventListener('click', handleSubmit);
     }
-
   }
   else if (hash === ('#/detail')) {
     app.innerHTML = getLayout('보기', 'detail');
