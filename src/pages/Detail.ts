@@ -25,4 +25,21 @@ export default function Detail(container: HTMLElement) {
       </footer>
     </div>
   `;
+
+  // 삭제 버튼 이벤트 리스너 추가
+  const deleteButton = main.querySelector('.delete-button');
+  if (deleteButton) {
+    deleteButton.addEventListener('click', (event) => {
+      event.stopPropagation(); // 클릭 이벤트 전파 방지
+      if (id) {
+        const index = diaryData.findIndex(d => d.id === id);
+        if (index !== -1) {
+          diaryData.splice(index, 1); // 일기 데이터에서 삭제
+          console.log(`Diary with id ${id} deleted`);
+          // 홈으로 리다이렉트
+          location.hash = '#/';
+        }
+      }
+    });
+  }
 }
